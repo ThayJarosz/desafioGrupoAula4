@@ -4,7 +4,7 @@ let listaDaVenda = reciboDeVenda.split(';');
 let novaLista = [];
 listaDaVenda.forEach(item => {
     if (item.length > 0) {
-        let partesBarra = item.split('/'); // item não é uma sting aqui
+        let partesBarra = item.split('/'); 
         let produtoNome = partesBarra[0].charAt(0).toUpperCase() + partesBarra[0].slice(1);
 
         let partesDoIgual = partesBarra[1].split('=');
@@ -19,10 +19,10 @@ listaDaVenda.forEach(item => {
         } else {
             novaLista.push(
                 {
-                    produto: produtoNome, // Nome do produto formatado com a primeira letra maiúscula 
-                    valor: valor, // Valor do produto
-                    cupom: cupom, // Valor de desconto do produto em porcentagem, nesse caso seria 4%
-                    quantidade: 1, // A quantidade que esse produto aparece na reciboDeVendaing
+                    produto: produtoNome, 
+                    valor: valor,
+                    cupom: cupom, 
+                    quantidade: 1, 
                 }
             );
         }
@@ -37,18 +37,17 @@ let comDesconto = 0;
 for (let itens in novaLista) {
 
     comDesconto += (novaLista[itens].valor - (novaLista[itens].valor * (novaLista[itens].cupom / 100))) * novaLista[itens].quantidade;
-    //console.log(comDesconto);
-
+    
     semDesconto += novaLista[itens].valor * novaLista[itens].quantidade;
-    //console.log(semDesconto);
+   
 
     quantidadeTotal += novaLista[itens].quantidade;
 }
 
 const totais = {
-    valorTotal: semDesconto, // Valor total da venda
-    valorTotalDesconto: comDesconto, // Valor total com desconto
-    quantidadeDeProdutos: quantidadeTotal, // Quantidade de produtos na venda
+    valorTotal: semDesconto, 
+    valorTotalDesconto: comDesconto, 
+    quantidadeDeProdutos: quantidadeTotal, 
 }
 
 console.log(totais);
